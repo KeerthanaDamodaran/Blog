@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f4ee">
+    <meta name="description" content="A thoughtful corner of the internet for stories, ideas, and conversations.">
+    <title>Inkwell — stories worth sharing</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Inkwell home"><span class="brand-mark">i</span> inkwell</a>
+      <nav class="header-actions" aria-label="Account">
+        <span id="welcome" class="welcome" hidden></span>
+        <button id="write-button" class="button button-dark" hidden>Write a story <span aria-hidden="true">↗</span></button>
+        <button id="login-button" class="button button-quiet">Sign in</button>
+        <button id="register-button" class="button button-outline">Get started</button>
+        <button id="logout-button" class="button button-quiet" hidden>Sign out</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> A place for your words</p>
+          <h1>Stories are better<br>when they're <em>shared.</em></h1>
+          <p class="hero-description">A quiet corner of the internet to collect your thoughts, discover new perspectives, and join the conversation.</p>
+          <a class="hero-link" href="#stories">Explore the stories <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-sun"></div>
+          <div class="art-page">
+            <span class="art-kicker">FIELD NOTES — No. 08</span>
+            <span class="art-rule"></span>
+            <span class="art-title">On finding<br>your own way</span>
+            <span class="art-copy">A collection of small<br>observations from the road.</span>
+            <span class="art-signature">✳</span>
+          </div>
+          <span class="art-caption">WORDS THAT STAY WITH YOU</span>
+        </div>
+      </section>
+
+      <section id="stories" class="stories-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> From the community</p>
+            <h2>Latest stories</h2>
+          </div>
+          <form id="search-form" class="search-form" role="search">
+            <label class="sr-only" for="search-input">Search stories</label>
+            <input id="search-input" type="search" placeholder="Find a story..." maxlength="100">
+            <button type="submit" aria-label="Search stories">⌕</button>
+          </form>
+        </div>
+        <p id="feed-status" class="feed-status" role="status"></p>
+        <div id="post-list" class="post-grid"></div>
+        <p id="empty-state" class="empty-state" hidden>No stories yet. Be the first to share one.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark footer-wordmark" href="/"><span class="brand-mark">i</span> inkwell</a>
+      <span>A little space for big thoughts.</span>
+      <span>Made for readers & writers <span aria-hidden="true">✳</span></span>
+    </footer>
+
+    <dialog id="auth-dialog" class="dialog">
+      <form id="auth-form" class="dialog-card">
+        <button type="button" class="dialog-close" data-close-dialog aria-label="Close">×</button>
+        <p class="eyebrow"><span class="eyebrow-line"></span> Your inkwell awaits</p>
+        <h2 id="auth-title">Welcome back</h2>
+        <p id="auth-subtitle" class="dialog-description">Sign in to join the conversation.</p>
+        <label id="name-field" class="field" hidden>
+          <span>Your name</span>
+          <input name="name" autocomplete="name" minlength="2" maxlength="60">
+        </label>
+        <label class="field">
+          <span>Email address</span>
+          <input name="email" type="email" autocomplete="email" maxlength="254" required>
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input name="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required>
+        </label>
+        <p id="auth-error" class="form-error" role="alert"></p>
+        <button id="auth-submit" class="button button-dark button-wide" type="submit">Sign in</button>
+        <p class="dialog-switch"><span id="auth-switch-prompt">New to Inkwell?</span> <button id="auth-switch" type="button">Create an account</button></p>
+      </form>
+    </dialog>
+
+    <dialog id="editor-dialog" class="dialog">
+      <form id="editor-form" class="dialog-card editor-card">
+        <button type="button" class="dialog-close" data-close-dialog aria-label="Close">×</button>
+        <p class="eyebrow"><span class="eyebrow-line"></span> Make it yours</p>
+        <h2 id="editor-title">Write a story</h2>
+        <label class="field">
+          <span>Title</span>
+          <input name="title" placeholder="A title that draws you in" minlength="3" maxlength="120" required>
+        </label>
+        <label class="field">
+          <span>Your story</span>
+          <textarea name="body" placeholder="Start wherever you are..." rows="10" maxlength="20000" required></textarea>
+        </label>
+        <p id="editor-error" class="form-error" role="alert"></p>
+        <button class="button button-dark button-wide" type="submit">Publish story <span aria-hidden="true">↗</span></button>
+      </form>
+    </dialog>
+
+    <dialog id="post-dialog" class="dialog post-dialog">
+      <article id="post-detail" class="dialog-card detail-card"></article>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
